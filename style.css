@@ -5,6 +5,9 @@
     --right-bg-color: rgba(43,43, 43, 0.8);
     --left-btn-hover-color: rgba(87, 84, 236, 1);
     --right-btn-hover-color: rgba(28, 122, 28, 1);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 1000ms;
 }
 
 
@@ -40,11 +43,13 @@ h1 {
     text-decoration: none;
     color: white;
     border: white solid 0.2rem;
+    border-radius: 8px;
     font-size: 1rem;
     font-size: bold;
     text-transform: uppercase;
     width: 15rem;
     padding: 1.5rem;
+    transition: 300ms ease;
 }
 
 .split.left .btn:hover {
@@ -56,8 +61,6 @@ h1 {
     background-color: var(--right-btn-hover-color);
     border-color: var(--right-btn-hover-color);
 }
-
-
 
 .container {
     position: relative;
@@ -88,6 +91,13 @@ h1 {
     background-color: var(--left--bg-color);
 }
 
+.split.right,
+.split.left, 
+.split.right::before,
+.split.left::before {
+    transition: all var(--speed) ease-in-out;
+}
+
 
 .split.right {
     right: 0;
@@ -104,4 +114,29 @@ h1 {
     background-color: var(--right--bg-color);
 }
 
+.hover-left .left {
+    width: var(--hover-width);
+}
 
+.hover-left .right {
+    width: var(--other-width);
+}
+
+.hover-right .right {
+    width: var(--hover-width);
+}
+
+.hover-right .left {
+    width: var(--other-width);
+}
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 1.2rem;
+        width: 12rem;
+    }
+}
